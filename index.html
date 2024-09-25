@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Responsive SpaceX Page</title>
     <link rel="stylesheet" href="./index.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,128 +13,92 @@
       rel="stylesheet"
     />
   </head>
-  <body>
-    <div class="background-image">
-      <!-- Header -->
-      <div class="flex justify-between items-center mx-32 sticky top-0">
-        <!-- logo -->
-        <div>
-          <img class="h-10" src="./images/spacex.svg" />
-        </div>
-        <!-- navs -->
-        <div>
-          <ul class="flex gap-x-20 pt-4">
-            <li
-              class="font-bold text-[20px] text-white cursor-pointer hover:text-blue-400 transition-all"
-            >
-              Home
-            </li>
-            <li
-              class="font-bold text-[20px] text-white cursor-pointer hover:text-blue-400 transition-all"
-            >
-              About
-            </li>
-            <li
-              class="font-bold text-[20px] text-white cursor-pointer hover:text-blue-400 transition-all"
-            >
-              Contact
-            </li>
-          </ul>
-        </div>
-        <!-- icon -->
-        <div>
-          <h1
-            id="timer"
-            class="text-black font-bold text-[28px] text-white pt-4"
-          ></h1>
-          <h1
-            id="dateTime"
-            class="text-black font-bold text-[16px] text-white"
-          ></h1>
-        </div>
+  <body class="bg-cover bg-center bg-no-repeat background-image">
+    <!-- Header -->
+    <div class="flex justify-between items-center px-6 md:px-16 lg:px-32 py-4 sticky top-0 backdrop-blur-lg bg-black/50 z-50">
+      <!-- logo -->
+      <div>
+        <img class="h-8 md:h-10" src="./images/spacex.svg" alt="SpaceX Logo" />
+      </div>
+      <!-- navs -->
+      <div>
+        <ul class="flex gap-x-6 md:gap-x-12 lg:gap-x-20 pt-2">
+          <li
+            class="font-bold text-[16px] md:text-[18px] lg:text-[20px] text-white cursor-pointer hover:text-blue-400 transition-all"
+          >
+            Home
+          </li>
+          <li
+            class="font-bold text-[16px] md:text-[18px] lg:text-[20px] text-white cursor-pointer hover:text-blue-400 transition-all"
+          >
+            About
+          </li>
+          <li
+            class="font-bold text-[16px] md:text-[18px] lg:text-[20px] text-white cursor-pointer hover:text-blue-400 transition-all"
+          >
+            Contact
+          </li>
+        </ul>
+      </div>
+      <!-- icon -->
+      <div class="text-right">
+        <h1 id="timer" class="text-white font-bold text-[20px] md:text-[24px] lg:text-[28px]"></h1>
+        <h1 id="dateTime" class="text-white font-bold text-[14px] md:text-[16px] lg:text-[18px]"></h1>
       </div>
     </div>
-  </body>
-  <script>
-    function getMonthName(number) {
-      // if (number === 0) {
-      //   return "Jan";
-      // } else if (number === 1) {
-      //   return "Feb";
-      // } else if (number === 2) {
-      //   return "March";
-      // } else if (number === 3) {
-      //   return "April";
-      // } else if (number === 4) {
-      //   return "May";
-      // } else if (number === 5) {
-      //   return "June";
-      // } else if (number === 6) {
-      //   return "July";
-      // } else if (number === 7) {
-      //   return "Aug";
-      // } else if (number === 8) {
-      //   return "Sep";
-      // } else if (number === 9) {
-      //   return "Oct";
-      // } else if (number === 10) {
-      //   return "Nov";
-      // } else if (number === 11) {
-      //   return "Dec";
-      // }
-      switch (number) {
-        case 0:
-          return "Jan";
-        case 1:
-          return "Feb";
-        case 2:
-          return "March";
-        case 3:
-          return "April";
-        case 4:
-          return "May";
-        case 5:
-          return "June";
-        case 6:
-          return "July";
-        case 7:
-          return "Aug";
-        case 8:
-          return "Sep";
-        case 9:
-          return "Oct";
-        case 10:
-          return "Nov";
-        case 11:
-          return "Dec";
+
+    <script>
+      function getMonthName(number) {
+        switch (number) {
+          case 0:
+            return "Jan";
+          case 1:
+            return "Feb";
+          case 2:
+            return "March";
+          case 3:
+            return "April";
+          case 4:
+            return "May";
+          case 5:
+            return "June";
+          case 6:
+            return "July";
+          case 7:
+            return "Aug";
+          case 8:
+            return "Sep";
+          case 9:
+            return "Oct";
+          case 10:
+            return "Nov";
+          case 11:
+            return "Dec";
+        }
       }
-    }
 
-    const updateTimer = () => {
-      const date = new Date();
-      const hours = date.getHours();
-      const minutes = date.getMinutes();
-      const seconds = date.getSeconds();
-      const todaydate = date.getDate();
-      const currentYear = date.getFullYear();
-      const currentMonth = date.getMonth();
+      const updateTimer = () => {
+        const date = new Date();
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+        const seconds = date.getSeconds();
+        const todaydate = date.getDate();
+        const currentYear = date.getFullYear();
+        const currentMonth = date.getMonth();
 
-      console.log(date);
+        console.log(date);
 
-      const timerText = `${hours < 10 ? "0" + hours : hours}:${
-        minutes < 10 ? "0" + minutes : minutes
-      }:${seconds < 10 ? "0" + seconds : seconds}`;
-      const dateText = `${todaydate} ${getMonthName(
-        currentMonth
-      )} ${currentYear}`;
-      document.getElementById("timer").textContent = timerText;
-      document.getElementById("dateTime").textContent = dateText;
-    };
+        const timerText = `${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+        const dateText = `${todaydate} ${getMonthName(currentMonth)} ${currentYear}`;
+        document.getElementById("timer").textContent = timerText;
+        document.getElementById("dateTime").textContent = dateText;
+      };
 
-    // Update timer every second
-    setInterval(updateTimer, 1000);
+      // Update timer every second
+      setInterval(updateTimer, 1000);
 
-    // Initial update
-    updateTimer();
-  </script>
+      // Initial update
+      updateTimer();
+    </script>
+  </body>
 </html>
